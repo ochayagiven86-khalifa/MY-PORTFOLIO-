@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Services</title>
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ===== GLOBAL ===== */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background: #0a0a0a; /* Dark mode background */
+    color: #fff;
+}
+
+/* ===== SERVICES SECTION ===== */
+.services-section {
+    padding: 100px 8%;
+    background: #0a0a0a;
+}
+
+.services-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.services-title h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.services-title::after {
+    content: '';
+    width: 90px;
+    height: 4px;
+    background: linear-gradient(90deg, #00f0ff, #ff0040);
+    display: block;
+    margin: 10px auto 0;
+    border-radius: 5px;
+}
+
+.services-title p {
+    font-size: 1.2rem;
+    color: #aaa;
+    margin-top: 10px;
+}
+
+/* ===== GRID ===== */
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 35px;
+}
+
+/* ===== SERVICE CARD ===== */
+.service-box {
+    position: relative;
+    background: rgba(255, 255, 255, 0.05); /* glass effect */
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 35px 25px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    transition: 0.4s ease;
+    transform: translateY(40px);
+    opacity: 0;
+}
+
+/* Neon border/glow on hover */
+.service-box:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 0 30px rgba(0,255,255,0.5), 0 0 50px rgba(255,0,64,0.5);
+    border: 1px solid rgba(0,255,255,0.6);
+}
+
+/* ===== ICON ===== */
+.service-box i {
+    font-size: 48px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #00f0ff, #ff0040);
+    -webkit-text-fill-color: transparent;
+}
+
+/* ===== TEXT ===== */
+.service-box h3 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.service-box p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+/* ===== ANIMATION ===== */
+.service-box.active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.8s ease;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .services-section {
+        padding: 80px 5%;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== SERVICES SECTION ===== -->
+<section class="services-section" id="services">
+    <div class="services-title">
+        <h2>My Services</h2>
+        <p>Building digital experiences that make brands unforgettable and Keeping your website fast, secure, and always up-to-date</p>
+    </div>
+
+    <div class="services-container">
+
+        <div class="service-box">
+            <i class="fas fa-code"></i>
+            <h3>Website Development</h3>
+            <p>Create responsive, fast, and modern websites with professional designs for brands and businesses.</p>
+        </div>
+
+        <div class="service-box">
+            <i class="fas fa-pencil-ruler"></i>
+            <h3>java script</h3>
+            <p>Design intuitive, clean, and visually stunning interfaces for the best user experience.</p>
+        </div>
+
+        <div class="service-box">
+            <i class="fas fa-tools"></i>
+            <h3>Website Maintenance</h3>
+            <p>Provide ongoing updates, speed optimization, bug fixes, and security monitoring for websites.</p>
+        </div>
+
+        <div class="service-box">
+            <i class="fas fa-mobile-alt"></i>
+            <h3>Responsive Design</h3>
+            <p>Ensure perfect performance and appearance on all devices: desktop, tablet, and mobile.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== SCROLL ANIMATION SCRIPT ===== -->
+<script>
+const boxes = document.querySelectorAll('.service-box');
+
+function reveal() {
+    boxes.forEach(box => {
+        const boxTop = box.getBoundingClientRect().top;
+        if (boxTop < window.innerHeight - 50) {
+            box.classList.add('active');
+        }
+    });
+}
+
+window.addEventListener('scroll', reveal);
+reveal();
+</script>
+
+</body>
+</html>

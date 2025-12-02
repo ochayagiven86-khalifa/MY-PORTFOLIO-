@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About & Skills - Ochaya Given</title>
+
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ===== GLOBAL ===== */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background: #0a0a0a;
+    color: #fff;
+    scroll-behavior: smooth;
+}
+
+/* ===== ABOUT SECTION ===== */
+.about-section {
+    padding: 100px 8%;
+    background: #0a0a0a;
+}
+
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 50px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.about-text {
+    flex: 1 1 500px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+.about-text.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about-text h2 {
+    font-size: 3rem;
+    margin-bottom: 25px;
+    color: #fff;
+    position: relative;
+}
+
+.about-text h2::after {
+    content: '';
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #00f0ff, #ff0040);
+    display: block;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: #ccc;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-text p::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #00f0ff, #ff0040, #00f0ff);
+    opacity: 0.3;
+    transform: skewX(-20deg);
+    animation: slide-highlight 2s linear infinite;
+}
+
+@keyframes slide-highlight {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
+}
+
+.about-img {
+    flex: 1 1 350px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+    position: relative;
+}
+
+.about-img.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about-img img {
+    width: 330px;
+    height: 330px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 0 25px #00f0ff, 0 0 50px #ff0040, 0 0 75px #00f0ff;
+    animation: floatGlow 6s ease-in-out infinite;
+    transition: transform 0.4s ease;
+}
+
+.about-img img:hover {
+    transform: scale(1.05) rotate(1deg);
+}
+
+@keyframes floatGlow {
+    0%, 100% { transform: translateY(0px); box-shadow: 0 0 25px #00f0ff, 0 0 50px #ff0040, 0 0 75px #00f0ff; }
+    50% { transform: translateY(-15px); box-shadow: 0 0 35px #ff0040, 0 0 60px #00f0ff, 0 0 90px #ff0040; }
+}
+
+/* ===== SKILLS / STATS SECTION ===== */
+.skills-section {
+    padding: 80px 8%;
+    background: #0a0a0a;
+}
+
+.skills-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.skills-title h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+    position: relative;
+}
+
+.skills-title h2::after {
+    content: '';
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #00f0ff, #ff0040);
+    display: block;
+    margin: 10px auto 0;
+    border-radius: 5px;
+}
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+
+.skill-box {
+    flex: 1 1 250px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 25px 20px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.skill-box:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 0 25px #00f0ff, 0 0 40px #ff0040;
+}
+
+.skill-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #00f0ff, #ff0040);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: #00f0ff;
+}
+
+/* Progress bar container */
+.progress-container {
+    width: 100%;
+    height: 15px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #00f0ff, #ff0040);
+    border-radius: 10px;
+    transition: width 2s ease;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .about-container, .skills-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-img img {
+        width: 250px;
+        height: 250px;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== ABOUT SECTION ===== -->
+<section class="about-section" id="about">
+    <div class="about-container">
+        <div class="about-text">
+            <h2>About Me</h2>
+            <p>
+                I'm <strong>Ochaya Given</strong>, a passionate website developer who loves creating modern,
+                responsive, and user-friendly websites. My portfolio shows my journey, skills, and dedication
+                to digital excellence.
+            </p>
+            <p>
+                I built this portfolio to share my work, connect with clients, and inspire others who want
+                to grow in web development.
+            </p>
+        </div>
+
+        <div class="about-img">
+            <img src="/photos/k1.png" alt="Ochaya Given">
+
+        </div>
+    </div>
+</section>
+
+<!-- ===== SKILLS / STATS SECTION ===== -->
+<section class="skills-section" id="skills">
+    <div class="skills-title">
+        <h2>My Skills</h2>
+    </div>
+
+    <div class="skills-container">
+        <div class="skill-box">
+            <h3>HTML</h3>
+            <P>My expertise in HTML allows me to build well-organized, maintainable, and scalable web structures,
+                 laying the foundation for dynamic websites.</P>
+            <div class="progress-container">
+                <div class="progress-bar" data-progress="95%"></div>
+            </div>
+        </div>
+
+        <div class="skill-box">
+            <h3>JavaScript</h3>
+            <p>Skilled in writing clean and efficient JavaScript code to implement front-end functionality and interactive features.</p>
+            <div class="progress-container">
+                <div class="progress-bar" data-progress="90%"></div>
+            </div>
+        </div>
+
+        <div class="skill-box">
+            <h3>CSS</h3>
+            <p>I have strong proficiency in CSS, creating responsive and visually appealing web designs. 
+                Skilled in Flexbox, Grid, and CSS animations, I build layouts that adapt seamlessly across devices.
+                 I focus on clean, maintainable, and scalable code, enhancing user experience with smooth transitions, 
+                 effects, and consistent styling across browsers.</p>
+            <div class="progress-container">
+                <div class="progress-bar" data-progress="85%"></div>
+            </div>
+        </div>
+
+        <div class="skill-box">
+            <h3>Git/Github</h3>
+            <p>Proficient in Git and GitHub for version control, branching, and collaboration.
+             Skilled at tracking changes, managing repositories, and maintaining clean commit histories,
+             ensuring smooth teamwork and efficient project development.</p>
+            <div class="progress-container">
+                <div class="progress-bar" data-progress="88%"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SCROLL ANIMATION SCRIPT ===== -->
+<script>
+const revealElements = document.querySelectorAll('.about-text, .about-img, .skill-box');
+
+function reveal() {
+    revealElements.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top < window.innerHeight - 50) {
+            el.classList.add('active');
+        }
+    });
+}
+window.addEventListener('scroll', reveal);
+reveal();
+
+/* Animate skill bars on scroll */
+const skillBars = document.querySelectorAll('.progress-bar');
+function animateSkillBars() {
+    skillBars.forEach(bar => {
+        const top = bar.getBoundingClientRect().top;
+        if (top < window.innerHeight - 50 && !bar.classList.contains('animated')) {
+            bar.style.width = bar.getAttribute('data-progress');
+            bar.classList.add('animated');
+        }
+    });
+}
+window.addEventListener('scroll', animateSkillBars);
+animateSkillBars();
+</script>
+
+</body>
+</html>
